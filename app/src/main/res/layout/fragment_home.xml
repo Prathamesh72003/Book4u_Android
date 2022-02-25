@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/off_white"
+    tools:context=".HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:id="@+id/upperContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/hi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hi,"
+                    android:textColor="@color/very_dark_lavander"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/findPdf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Let's find a PDF for you"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="22dp"
+                android:hint="Search here..."
+                android:drawableRight="@drawable/ic_search"
+                android:focusableInTouchMode="true"
+                android:descendantFocusability="beforeDescendants"
+                app:layout_constraintTop_toBottomOf="@+id/upperContainer"
+                tools:layout_editor_absoluteX="15dp"
+                android:background="@drawable/searchbar_bg"
+                android:layout_marginTop="15dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/carousel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/searchBar" />
+
+            <LinearLayout
+                android:id="@+id/trendingContainer"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/carousel">
+
+                <TextView
+                    android:id="@+id/trendingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trending"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/trendingPDFs"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/department"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/trendingContainer">
+
+                <TextView
+                    android:id="@+id/deptText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Departments"
+                    android:layout_marginBottom="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+                
+                <GridLayout
+                    android:id="@+id/deptIcons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/compDept"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/computer"
+                        android:background="@drawable/trendingpdf_bg"/>
+
+                    <ImageButton
+                        android:id="@+id/itDept"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_marginLeft="9dp"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/it"
+                        android:background="@drawable/trendingpdf_bg" />
+
+                    <ImageButton
+                        android:id="@+id/civilDept"
+                        android:layout_row="0"
+                        android:layout_column="2"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/civil"
+                        android:background="@drawable/trendingpdf_bg" />
+
+                    <ImageButton
+                        android:id="@+id/metallurgyDept"
+                        android:layout_row="0"
+                        android:layout_column="3"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/metallurgy"
+                        android:background="@drawable/trendingpdf_bg" />
+
+                    <ImageButton
+                        android:id="@+id/ddgmDept"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ddgm"
+                        android:background="@drawable/trendingpdf_bg" />
+
+                    <ImageButton
+                        android:id="@+id/electricalDept"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/electrical"
+                        android:background="@drawable/trendingpdf_bg" />
+
+                    <ImageButton
+                        android:id="@+id/entcDept"
+                        android:layout_row="1"
+                        android:layout_column="2"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/entc"
+                        android:background="@drawable/trendingpdf_bg" />
+
+                    <ImageButton
+                        android:id="@+id/mechanicalDept"
+                        android:layout_row="1"
+                        android:layout_column="3"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mechanical"
+                        android:background="@drawable/trendingpdf_bg" />
+                       
+                    
+                </GridLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>
