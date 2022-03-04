@@ -13,90 +13,103 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/upperContainer"
+                android:id="@+id/upper_parent"
+                android:background="@drawable/home_screen_curve"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="360dp"
                 android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="15dp">
 
-                <TextView
-                    android:id="@+id/hi"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/upperContainer"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hi,"
-                    android:textColor="@color/very_dark_lavander"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintHorizontal_bias="0"
+                    android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/findPdf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Let's find a PDF for you"
+                    <TextView
+                        android:id="@+id/hi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hi,"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/findPdf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Let's find a PDF for you"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/searchBar"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/searchbar_bg"
+                    android:descendantFocusability="beforeDescendants"
+                    android:drawableRight="@drawable/ic_search"
+                    android:elevation="5dp"
+                    android:focusableInTouchMode="true"
+                    android:hint="Search here..."
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintHorizontal_bias="0"
+                    android:textSize="22dp"
+                    app:layout_constraintTop_toBottomOf="@+id/upperContainer"
+                    tools:layout_editor_absoluteX="15dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/carousel"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/searchBar" />
             </LinearLayout>
-
-            <EditText
-                android:id="@+id/searchBar"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textSize="22dp"
-                android:hint="Search here..."
-                android:drawableRight="@drawable/ic_search"
-                android:focusableInTouchMode="true"
-                android:descendantFocusability="beforeDescendants"
-                app:layout_constraintTop_toBottomOf="@+id/upperContainer"
-                tools:layout_editor_absoluteX="15dp"
-                android:background="@drawable/searchbar_bg"
-                android:layout_marginTop="15dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/carousel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchBar" />
 
             <LinearLayout
                 android:id="@+id/trendingContainer"
+                android:layout_margin="15dp"
                 android:orientation="vertical"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/carousel">
+                app:layout_constraintTop_toBottomOf="@+id/upper_parent">
 
                 <TextView
                     android:id="@+id/trendingText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Trending"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/trendingPDFs"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/white"/>
@@ -105,7 +118,7 @@
 
             <LinearLayout
                 android:id="@+id/department"
-                android:layout_marginTop="15dp"
+                android:layout_margin="15dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,100 +133,236 @@
                     android:text="Departments"
                     android:layout_marginBottom="15dp"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
-                
+
                 <GridLayout
                     android:id="@+id/deptIcons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageButton
-                        android:id="@+id/compDept"
+                    <LinearLayout
+                        android:id="@+id/dep1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="0"
+                        android:elevation="10dp"
                         android:layout_column="0"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/computer"
-                        android:background="@drawable/trendingpdf_bg"/>
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
 
-                    <ImageButton
-                        android:id="@+id/itDept"
+                        <ImageView
+                            android:id="@+id/depImg1"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText1"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dep2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="0"
                         android:layout_column="1"
-                        android:layout_marginLeft="9dp"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/it"
-                        android:background="@drawable/trendingpdf_bg" />
+                        android:elevation="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
 
-                    <ImageButton
-                        android:id="@+id/civilDept"
+                        <ImageView
+                            android:id="@+id/depImg2"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText2"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dep3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="0"
                         android:layout_column="2"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/civil"
-                        android:background="@drawable/trendingpdf_bg" />
+                        android:layout_marginLeft="10dp"
+                        android:elevation="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
 
-                    <ImageButton
-                        android:id="@+id/metallurgyDept"
+                        <ImageView
+                            android:id="@+id/depImg3"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText3"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dep4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="0"
                         android:layout_column="3"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/metallurgy"
-                        android:background="@drawable/trendingpdf_bg" />
+                        android:elevation="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
 
-                    <ImageButton
-                        android:id="@+id/ddgmDept"
+                        <ImageView
+                            android:id="@+id/depImg4"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText4"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dep5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="0"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_marginTop="8dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ddgm"
-                        android:background="@drawable/trendingpdf_bg" />
+                        android:elevation="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
 
-                    <ImageButton
-                        android:id="@+id/electricalDept"
+                        <ImageView
+                            android:id="@+id/depImg5"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText5"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dep6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="1"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_marginTop="8dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/electrical"
-                        android:background="@drawable/trendingpdf_bg" />
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:elevation="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
 
-                    <ImageButton
-                        android:id="@+id/entcDept"
+                        <ImageView
+                            android:id="@+id/depImg6"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText6"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dep7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="2"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_marginTop="8dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/entc"
-                        android:background="@drawable/trendingpdf_bg" />
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:elevation="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
 
-                    <ImageButton
-                        android:id="@+id/mechanicalDept"
+                        <ImageView
+                            android:id="@+id/depImg7"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText7"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dep8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="3"
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:layout_marginTop="8dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/mechanical"
-                        android:background="@drawable/trendingpdf_bg" />
-                       
-                    
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:elevation="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/trendingpdf_bg">
+
+                        <ImageView
+                            android:id="@+id/depImg8"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/civil" />
+
+                        <TextView
+                            android:id="@+id/DepText8"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Civil"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
                 </GridLayout>
             </LinearLayout>
 

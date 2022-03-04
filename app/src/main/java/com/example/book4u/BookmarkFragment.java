@@ -3,6 +3,8 @@ package com.example.book4u;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,11 +56,23 @@ public class BookmarkFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+int img[] = {R.drawable.java_book, R.drawable.os_book};
+    String heading[] = {"Java Programming", "Operating System"};
+    String totalReaders[] = {"50", "70"};
+    String description[] = {"hello there how are you doin", "heyyaaa hola I am good hope you are doing fine and also fuck off"};
+    BookMarkAdapter bookMarkAdapter;
+    LinearLayoutManager linearLayoutManager;
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_bookmark, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bookmark, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.BookmarkRecyclerView);
+        bookMarkAdapter = new BookMarkAdapter(getContext(), img, heading, totalReaders, description);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), linearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(bookMarkAdapter);
+        return view;
     }
 }
