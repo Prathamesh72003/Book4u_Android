@@ -18,6 +18,14 @@
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4U/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4U/app/src/main/res/layout/recycler_layout.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4U/app/src/main/res/layout/trendingpdf_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/drawable/home_screen_curve.xml" value="0.2703125" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_bottom_tab.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/bookmarkpdf_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/downloadpdf_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_bookmark.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_download.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/trendingpdf_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pthak/AndroidStudioProjects/Book4u/app/src/main/res/drawable/login_container.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pthak/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_bottom_tab.xml" value="0.152" />
         <entry key="..\:/Users/pthak/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_bottom_try.xml" value="0.17798913043478262" />
@@ -52,6 +60,7 @@
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

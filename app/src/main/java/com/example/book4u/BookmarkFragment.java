@@ -56,10 +56,18 @@ public class BookmarkFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-int img[] = {R.drawable.java_book, R.drawable.os_book};
-    String heading[] = {"Java Programming", "Operating System"};
-    String totalReaders[] = {"50", "70"};
-    String description[] = {"hello there how are you doin", "heyyaaa hola I am good hope you are doing fine and also fuck off"};
+    int img[] = {R.drawable.java_book, R.drawable.os_book, R.drawable.os_book, R.drawable.java_book,R.drawable.java_book, R.drawable.os_book, R.drawable.os_book, R.drawable.java_book};
+    String heading[] = {"Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II","Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II"};
+    String totalReaders[] = {"50", "70", "0", "101", "50", "70", "0", "101"};
+
+    String description[] = {"hello there how are you doin",
+            "heyyaaa hola I am good hope you are doing fine and also fuck off",
+            "This subject teacher is fucking idiot she dont care the students effort👎",
+            "Good teacher not that good",
+            "hello there how are you doin",
+            "heyyaaa hola I am good hope you are doing fine and also fuck off",
+            "This subject teacher is fucking idiot she dont care the students effort👎",
+            "Good teacher not that good"};
     BookMarkAdapter bookMarkAdapter;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
@@ -69,7 +77,7 @@ int img[] = {R.drawable.java_book, R.drawable.os_book};
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bookmark, container, false);
         // Inflate the layout for this fragment
-        recyclerView = (RecyclerView) view.findViewById(R.id.BookmarkRecyclerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.bookmarkPDFsRecyclerView);
         bookMarkAdapter = new BookMarkAdapter(getContext(), img, heading, totalReaders, description);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), linearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(bookMarkAdapter);

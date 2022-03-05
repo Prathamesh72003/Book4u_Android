@@ -3,6 +3,8 @@ package com.example.book4u;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,10 +57,25 @@ public class DownloadFragment extends Fragment {
         }
     }
 
+    int img[] = {R.drawable.java_book, R.drawable.os_book, R.drawable.os_book, R.drawable.java_book,R.drawable.java_book, R.drawable.os_book, R.drawable.os_book, R.drawable.java_book};
+    String heading[] = {"Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II","Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II"};
+    String totalDownloads[] = {"50", "70", "0", "101", "50", "70", "0", "101"};
+    String dates[] = {"05-03-2022", "23-11-2021","05-03-2022", "23-11-2021","05-03-2022", "23-11-2021","05-03-2022", "23-11-2021"};
+
+    RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
+    DownloadAdapter downloadAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_download, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_download, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.downloadPDFsRecyclerView);
+        downloadAdapter = new DownloadAdapter(getContext(), img, heading,totalDownloads, dates);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), linearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(downloadAdapter);
+        return view;
     }
 }

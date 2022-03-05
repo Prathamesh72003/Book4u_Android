@@ -19,7 +19,7 @@
                 android:id="@+id/upper_parent"
                 android:background="@drawable/home_screen_curve"
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="345dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,13 +157,13 @@
                             android:id="@+id/depImg1"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/computer" />
 
                         <TextView
                             android:id="@+id/DepText1"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="Computer"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -184,13 +184,13 @@
                             android:id="@+id/depImg2"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/entc_new" />
 
                         <TextView
                             android:id="@+id/DepText2"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="ENTC"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -211,13 +211,13 @@
                             android:id="@+id/depImg3"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/metallurgy_new" />
 
                         <TextView
                             android:id="@+id/DepText3"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="Metallurgy"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -238,13 +238,13 @@
                             android:id="@+id/depImg4"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/ddgm" />
 
                         <TextView
                             android:id="@+id/DepText4"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="DDGM"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -295,13 +295,13 @@
                             android:id="@+id/depImg6"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/mechanical" />
 
                         <TextView
                             android:id="@+id/DepText6"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="Mechanical"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -324,13 +324,13 @@
                             android:id="@+id/depImg7"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/it" />
 
                         <TextView
                             android:id="@+id/DepText7"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="IT"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -353,13 +353,13 @@
                             android:id="@+id/depImg8"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/electrical" />
 
                         <TextView
                             android:id="@+id/DepText8"
                             android:layout_width="75dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="Electrical"
                             android:textAlignment="center" />
                     </LinearLayout>
 
