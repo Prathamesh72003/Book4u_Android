@@ -16,6 +16,7 @@
 
     <color name="very_light_grey">#D3D3D3</color>
     <color name="cobalt_blue">#0047AB</color>
+    <color name="bottom_tab_color">#3c415e</color>
 
 
 </resources>
