@@ -1,5 +1,6 @@
 package com.example.book4u;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -80,15 +82,16 @@ public class HomeFragment extends Fragment {
     TrendingPDFAdapter trendingPDFAdapter;
     LinearLayoutManager HorizontalLayout;
     RecyclerView.LayoutManager layoutManager;
+    TrendingPDFAdapter.OnClickListenerInterface onClickListenerInterface;
 
     //arrays for trendingPDFS
-    int[] pdfImg = {R.drawable.java_book, R.drawable.c_book, R.drawable.os_book};
-
-    String[] pdfName = {
-            "Java Programming",
-            "Programming in C",
-            "Operating System"
-    };
+//    int[] pdfImg = {R.drawable.java_book, R.drawable.c_book, R.drawable.os_book};
+//
+//    String[] pdfName = {
+//            "Java Programming",
+//            "Programming in C",
+//            "Operating System"
+//    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -121,12 +124,46 @@ public class HomeFragment extends Fragment {
         },0,2000);
 
         //for trendingPDFS
+
+        callIntent();
         recyclerView = (RecyclerView) view.findViewById(R.id.trendingPDFs);
-        trendingPDFAdapter = new TrendingPDFAdapter(getContext(), pdfName, pdfImg);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        trendingPDFAdapter = new TrendingPDFAdapter(getContext(), pdfInfoList());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(trendingPDFAdapter);
 
         return view;
+    }
+
+    private void callIntent() {
+        onClickListenerInterface = new TrendingPDFAdapter.OnClickListenerInterface() {
+            @Override
+            public void listener(View v, int position) {
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    public ArrayList<TrendingPDFModel> pdfInfoList(){
+
+        ArrayList<TrendingPDFModel> pdfHolder = new ArrayList<>();
+
+        TrendingPDFModel ob1 = new TrendingPDFModel();
+        ob1.setImgName(R.drawable.c_book);
+        ob1.setPdfName("CPP");
+        pdfHolder.add(ob1);
+
+        TrendingPDFModel ob2 = new TrendingPDFModel();
+        ob2.setImgName(R.drawable.os_book);
+        ob2.setPdfName("Operating System");
+        pdfHolder.add(ob2);
+
+        TrendingPDFModel ob3 = new TrendingPDFModel();
+        ob3.setImgName(R.drawable.java_book);
+        ob3.setPdfName("Java Programming");
+        pdfHolder.add(ob3);
+
+        return  pdfHolder;
     }
 
 }

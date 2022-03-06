@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/pdfCardview"
         android:layout_width="143dp"
         android:layout_height="195dp"
         android:background="@android:color/transparent"
