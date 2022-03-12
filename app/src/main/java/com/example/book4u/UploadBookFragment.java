@@ -8,6 +8,10 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -58,10 +62,64 @@ public class UploadBookFragment extends Fragment {
         }
     }
 
+
+    String[] years =  {"1st Year","2nd Year","3rd Year"};
+    AutoCompleteTextView autoCompleteTxt;
+    ArrayAdapter<String> adapterItems;
+
+    String[] dept =  {"Computer","IT","Mechanical","Electrical","Civil","ENTC", "DDGM", "Metallurgy"};
+    AutoCompleteTextView DeptautoCompleteTxt;
+    ArrayAdapter<String> DeptadapterItems;
+
+    String[] subs =  {"JP-2","CS","Python","Data mining","Project"};
+    AutoCompleteTextView SubtautoCompleteTxt;
+    ArrayAdapter<String> SubtadapterItems;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_upload_book, container, false);
+        View view = inflater.inflate(R.layout.fragment_upload_pdf, container, false);
+
+        autoCompleteTxt = view.findViewById(R.id.auto_complete_txt);
+
+        adapterItems = new ArrayAdapter<String>(getContext(),R.layout.list_item,years);
+        autoCompleteTxt.setAdapter(adapterItems);
+
+        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        DeptautoCompleteTxt = view.findViewById(R.id.dept_autocomplete);
+
+        DeptadapterItems = new ArrayAdapter<String>(getContext(),R.layout.list_item,dept);
+        DeptautoCompleteTxt.setAdapter(DeptadapterItems);
+
+        DeptautoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        SubtautoCompleteTxt = view.findViewById(R.id.sub_autocomplete);
+
+        SubtadapterItems = new ArrayAdapter<String>(getContext(),R.layout.list_item,dept);
+        SubtautoCompleteTxt.setAdapter(SubtadapterItems);
+
+        SubtautoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return view;
     }
 }

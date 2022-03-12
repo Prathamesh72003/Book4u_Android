@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Study/Android/Book4u/app/src/main/res/drawable/ic_add.xml" value="0.26614583333333336" />
+        <entry key="..\:/Study/Android/Book4u/app/src/main/res/drawable/ic_uploadfileicon.xml" value="0.26614583333333336" />
+        <entry key="..\:/Study/Android/Book4u/app/src/main/res/drawable/ic_yearicon.xml" value="0.26614583333333336" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/drawable/login_container.xml" value="0.26614583333333336" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/drawable/middle_text_bg.xml" value="0.26614583333333336" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/drawable/otp_bg.xml" value="0.26614583333333336" />
@@ -12,9 +15,11 @@
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/drawable/trendingpdf_bg.xml" value="0.26614583333333336" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/layout/activity_bottom_tab.xml" value="0.25" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/layout/fragment_bookmark.xml" value="0.25" />
+        <entry key="..\:/Study/Android/Book4u/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/layout/fragment_upload.xml" value="0.25" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/layout/fragment_upload_book.xml" value="0.25" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/layout/fragment_upload_pdf.xml" value="0.25" />
+        <entry key="..\:/Study/Android/Book4u/app/src/main/res/layout/list_item.xml" value="0.25" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/menu/bottommenu.xml" value="0.25" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/menu/year_menu.xml" value="0.25" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4U/app/src/main/res/drawable/carousel_bg.xml" value="0.2703125" />
