@@ -13,10 +13,10 @@ import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link UploadFragment#newInstance} factory method to
+ * Use the {@link UploadBookFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UploadFragment extends Fragment {
+public class UploadBookFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +27,7 @@ public class UploadFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public UploadFragment() {
+    public UploadBookFragment() {
         // Required empty public constructor
     }
 
@@ -37,14 +37,16 @@ public class UploadFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment UploadFragment.
+     * @return A new instance of fragment UploadBookFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static UploadFragment newInstance(String param1, String param2) {
+    public static UploadBookFragment newInstance(String param1, String param2) {
+        UploadBookFragment fragment = new UploadBookFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
-        return null;
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -56,44 +58,10 @@ public class UploadFragment extends Fragment {
         }
     }
 
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    UploadAdapter uploadAdapter;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_upload, container, false);
-
-        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
-        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-
-        tabLayout.addTab(tabLayout.newTab().setText("Upload Pdf"));
-        tabLayout.addTab(tabLayout.newTab().setText("Upload Book"));
-
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        uploadAdapter = new UploadAdapter(getChildFragmentManager(),getContext(), tabLayout.getTabCount());
-        viewPager.setAdapter(uploadAdapter);
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_upload_book, container, false);
     }
 }
