@@ -79,10 +79,10 @@ public class HomeFragment extends Fragment {
     //arrays for carousel
     String[] carouselStatements = {
             "Read pdfs anytime \nanywhere with ease",
-            "Variety of pdfs on \nsingle touch",
-            "Reach out a huge \ncommunity and grow \ntogether"
+            "Variety of pdfs on single \ntouch",
+            "Reach out huge \ncommunity and grow together"
     };
-    int[] carouselImage = {R.drawable.cpp, R.drawable.python, R.drawable.typescript};
+    int[] carouselImage = {R.raw.carousel1, R.raw.onboarding2, R.raw.onboarding3};
 
     //for trendingPDFS
     ImageView imageView;
@@ -90,15 +90,6 @@ public class HomeFragment extends Fragment {
     LinearLayoutManager HorizontalLayout;
     RecyclerView.LayoutManager layoutManager;
     TrendingPDFAdapter.OnClickListenerInterface onClickListenerInterface;
-
-    //arrays for trendingPDFS
-//    int[] pdfImg = {R.drawable.java_book, R.drawable.c_book, R.drawable.os_book};
-//
-//    String[] pdfName = {
-//            "Java Programming",
-//            "Programming in C",
-//            "Operating System"
-//    };
 
     EditText searchText;
 

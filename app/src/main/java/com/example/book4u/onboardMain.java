@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,10 +19,13 @@ public class onboardMain extends AppCompatActivity {
     ViewPager viewPager;
     LinearLayout linearLayout;
     TextView textView;
+    Button b1;
 
     SliderAdapter sliderAdapter;
 
     public TextView[] pageIndicator;
+
+    private int btn_no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +36,29 @@ public class onboardMain extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.slideViewPager);
         linearLayout = (LinearLayout) findViewById(R.id.pageIndicator);
         textView = (TextView) findViewById(R.id.skip);
+        b1 = (Button) findViewById(R.id.button);
 
         sliderAdapter = new SliderAdapter(this);
 
         viewPager.setAdapter(sliderAdapter);
         addPagination(0);
         viewPager.addOnPageChangeListener(viewListener);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+            }
+        });
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -65,6 +86,14 @@ public class onboardMain extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             addPagination(position);
+            btn_no = position;
+
+            if(position == pageIndicator.length - 1){
+                b1.setEnabled(true);
+                b1.setText("GET STARTED");
+                b1.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.INVISIBLE);
+            }
         }
 
         @Override

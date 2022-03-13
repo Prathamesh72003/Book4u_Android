@@ -10,7 +10,7 @@
         android:elevation="5dp"
         android:layout_height="176dp"
         android:background="@android:color/transparent"
-        android:backgroundTint="@color/cobalt_blue"
+        android:backgroundTint="@color/bottom_tab_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,19 +22,21 @@
             android:background="@drawable/carousel_bg"
             android:padding="15dp">
 
-            <ImageView
+            <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/imageView"
-                android:layout_width="122dp"
-                android:layout_height="120dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/onboarding1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/c_hash" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="171dp"
-                android:layout_height="129dp"
+                android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="C# is the avg \nprogramming lang"
                 android:textColor="@color/black"

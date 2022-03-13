@@ -148,7 +148,7 @@
             android:id="@+id/verifyButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/dark_lavender"
+            android:backgroundTint="@color/cobalt_blue"
             android:elevation="20dp"
             android:text="VERIFY"
             android:onClick="loginMethod"

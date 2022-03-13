@@ -25,7 +25,7 @@ public class SliderAdapter extends PagerAdapter {
     }
 
     public int[] lottieGIF = {
-            R.raw.onboarding1,
+            R.raw.carousel1,
             R.raw.onboarding2,
             R.raw.onboarding3
     };

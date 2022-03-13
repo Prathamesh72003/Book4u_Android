@@ -74,13 +74,16 @@
                 android:id="@+id/middleContainer"
                 android:layout_width="match_parent"
                 android:layout_height="143dp"
-                app:layout_constraintBottom_toBottomOf="@+id/pdfDetailsImg">
+                app:layout_constraintBottom_toBottomOf="@+id/pdfDetailsImg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <io.alterac.blurkit.BlurLayout
                     android:id="@+id/blurLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:blk_blurRadius="3"
+                    app:blk_cornerRadius="30dp"
                     app:blk_downscaleFactor="0.1"
                     app:blk_fps="0"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -92,30 +95,34 @@
                     android:id="@+id/leftContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="35dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/title"
-                        android:layout_width="wrap_content"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:text="Operating System book"
                         android:textColor="@color/black"
-                        android:textSize="23sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textSize="26sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/subject"
-                        android:layout_width="wrap_content"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="Operating System"
                         android:textColor="@color/black"
-                        android:textSize="17sp"
+                        android:textSize="20sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -127,25 +134,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:elevation="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/leftContainer"
                     app:layout_constraintTop_toTopOf="parent">
-
-                    <io.alterac.blurkit.BlurLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:blk_blurRadius="3"
-                        app:blk_downscaleFactor="0.1"
-                        app:blk_fps="0"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"></io.alterac.blurkit.BlurLayout>
 
                     <LinearLayout
                         android:id="@+id/ViewsBox"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
+                        android:alpha="0.8"
                         android:background="@drawable/middle_text_bg"
                         android:orientation="vertical"
                         android:padding="13dp"
@@ -179,6 +177,7 @@
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:alpha="0.8"
                         android:background="@drawable/middle_text_bg"
                         android:ellipsize="end"
                         android:gravity="center"
@@ -247,6 +246,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Download"
+                android:outlineSpotShadowColor="@color/cobalt_blue"
+                android:textColor="@color/cobalt_blue"
                 android:textAllCaps="false"
                 app:cornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -260,6 +261,7 @@
                 android:layout_height="50dp"
                 android:text="Read Now"
                 android:textAllCaps="false"
+                android:backgroundTint="@color/cobalt_blue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

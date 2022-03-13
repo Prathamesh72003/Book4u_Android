@@ -1,6 +1,7 @@
 package com.example.book4u;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BookMarkAdapter extends RecyclerView.Adapter<BookMarkAdapter.BookMarkHolder> {
@@ -19,6 +21,7 @@ public class BookMarkAdapter extends RecyclerView.Adapter<BookMarkAdapter.BookMa
     String heading[];
     String totalReaders[];
     String description[];
+    private int pos;
 
         public BookMarkAdapter(Context context, int img[], String heading[], String[] totalReaders,  String[] description) {
             this.context = context;
@@ -41,6 +44,16 @@ public class BookMarkAdapter extends RecyclerView.Adapter<BookMarkAdapter.BookMa
             holder.pdfName.setText(heading[position]);
             holder.totalReaders.setText(totalReaders[position]);
             holder.description.setText(description[position]);
+           // pos = position;
+            holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    //intent.putExtra("imgName", img[pos]);
+                    //intent.putExtra("pdfName", heading[pos]);
+                    context.startActivity(intent);
+                }
+            });
         }
 
         @Override
@@ -54,6 +67,7 @@ public class BookMarkAdapter extends RecyclerView.Adapter<BookMarkAdapter.BookMa
             TextView pdfName;
             TextView totalReaders;
             TextView description;
+            ConstraintLayout constraintLayout;
 
             public BookMarkHolder(@NonNull View itemView) {
                 super(itemView);
@@ -61,7 +75,7 @@ public class BookMarkAdapter extends RecyclerView.Adapter<BookMarkAdapter.BookMa
                 pdfName = (TextView) itemView.findViewById(R.id.Pdf_name);
                 totalReaders = (TextView) itemView.findViewById(R.id.total_readers);
                 description = (TextView) itemView.findViewById(R.id.description);
+                constraintLayout = (ConstraintLayout) itemView.findViewById(R.id.bookmarkDetailsBtn);
             }
-
         }
 }

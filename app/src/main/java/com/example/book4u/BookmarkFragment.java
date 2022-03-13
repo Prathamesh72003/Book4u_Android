@@ -60,14 +60,14 @@ public class BookmarkFragment extends Fragment {
     String heading[] = {"Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II","Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II"};
     String totalReaders[] = {"50", "70", "0", "101", "50", "70", "0", "101"};
 
-    String description[] = {"hello there how are you doin",
-            "heyyaaa hola I am good hope you are doing fine and also fuck off",
-            "This subject teacher is fucking idiot she dont care the students effort👎",
-            "Good teacher not that good",
-            "hello there how are you doin",
-            "heyyaaa hola I am good hope you are doing fine and also fuck off",
-            "This subject teacher is fucking idiot she dont care the students effort👎",
-            "Good teacher not that good"};
+    String description[] = {"Java is a programming language and computing platform first released by Sun Microsystems in 1995. It has evolved from humble beginnings to power a large share of today’s digital world, by providing the reliable platform upon which many services and applications are built.",
+            "An operating system is a software programme required to manage and operate a computing device like smartphones, tablets, computers, supercomputers, web servers, cars, network towers, smartwatches, etc. ",
+            "A computer network is a set of computers sharing resources located on or provided by network nodes. The computers use common communication protocols over digital interconnections to communicate with each other.",
+            "Advanced Java is everything that goes beyond Core Java – most importantly the APIs defined in Java Enterprise Edition, includes Servlet programming, Web Services, the Persistence API, etc. ",
+            "Java is a programming language and computing platform first released by Sun Microsystems in 1995. It has evolved from humble beginnings to power a large share of today’s digital world, by providing the reliable platform upon which many services and applications are built.",
+            "An operating system is a software programme required to manage and operate a computing device like smartphones, tablets, computers, supercomputers, web servers, cars, network towers, smartwatches, etc. ",
+            "A computer network is a set of computers sharing resources located on or provided by network nodes. The computers use common communication protocols over digital interconnections to communicate with each other.",
+            "Advanced Java is everything that goes beyond Core Java – most importantly the APIs defined in Java Enterprise Edition, includes Servlet programming, Web Services, the Persistence API, etc. "};
     BookMarkAdapter bookMarkAdapter;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;

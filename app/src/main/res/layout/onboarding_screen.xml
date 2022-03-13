@@ -6,35 +6,45 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animView"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/onboarding1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="70dp"/>
 
     <TextView
         android:id="@+id/onboardingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/nunito_variablefont_wght"
         android:text="Title Text will be short"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="25sp"
         android:layout_below="@+id/animView"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"/>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="120dp"
+        android:layout_height="2.5dp"
+        android:layout_marginTop="15dp"
+        app:circularflow_radiusInDP="30dp"
+        android:layout_below="@id/onboardingTitle"
+        android:layout_centerHorizontal="true"
+        android:background="@color/off_white" />
 
     <TextView
         android:id="@+id/titleDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="This text is going to be replaced by the text which is present in the array."
-        android:layout_below="@+id/onboardingTitle"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/separator"
         android:padding="30dp"
+        android:textColor="@color/off_white"
         android:textAlignment="center"
         />
 

@@ -19,14 +19,16 @@ public class NotificationActivity extends AppCompatActivity {
     NotificationAdapter notificationAdapter;
     RecyclerView recyclerView;
     String heading[] = {"Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II","Java Programming", "Operating System", "Advanced Computer Network", "Java Programming II"};
-    String description[] = {"hello there how are you doin heyyaaa hola I am good hope you are doing fine and also fuck off",
-            "heyyaaa hola I am good hope you are doing fine and also fuck off",
-            "This subject teacher is fucking idiot she dont care the students effort👎",
-            "Good teacher not that good",
-            "hello there how are you doin",
-            "heyyaaa hola I am good hope you are doing fine and also fuck off",
-            "This subject teacher is fucking idiot she dont care the students effort👎",
-            "Good teacher not that good"};
+
+    String description[] = {"New book has been uploaded for Java - Applet",
+            "Pdf for Operating System on Deadlock has been recently uploaded.",
+            "Don't forget to check new books for ACN",
+            "Check out the new pdf for Unit-1 - AWT(Abstract Window Toolkit)",
+            "New book has been uploaded for Java - MultiThreading",
+            "Pdf for Operating System on Deadlock has been recently uploaded.",
+            "Don't forget to check new books for ACN",
+            "Check out the new pdf for Unit-1 - AWT(Abstract Window Toolkit)"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

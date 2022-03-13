@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHolder> {
 
     View view;
@@ -34,7 +36,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv.setText(data[position % data.length]);
-        holder.iv.setImageResource(img[position % data.length]);
+        holder.lv.setAnimation(img[position % data.length]);
     }
 
     @Override
@@ -45,12 +47,12 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv;
-        ImageView iv;
+        LottieAnimationView lv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.textView);
-            iv = (ImageView) itemView.findViewById(R.id.imageView);
+            lv = (LottieAnimationView) itemView.findViewById(R.id.imageView);
         }
     }
 }

@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Let's find a PDF for you"
+                        android:text="How you doin'"
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         android:textStyle="bold"

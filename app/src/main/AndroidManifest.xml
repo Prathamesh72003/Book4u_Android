@@ -36,11 +36,11 @@
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
+
         <activity
             android:name=".BottomTabActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
-
         </activity>
         <activity
             android:name=".OTPActivity"
