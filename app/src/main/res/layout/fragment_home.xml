@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/off_white"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:id="@+id/homeFrags">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -143,34 +144,38 @@
 
                     <LinearLayout
                         android:id="@+id/dep1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="0"
                         android:elevation="10dp"
                         android:layout_column="0"
                         android:gravity="center"
                         android:padding="5dp"
+                        android:layout_marginLeft="5dp"
                         android:background="@drawable/trendingpdf_bg">
 
                         <ImageView
                             android:id="@+id/depImg1"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/computer" />
 
                         <TextView
                             android:id="@+id/DepText1"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="Computer"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/dep2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="0"
                         android:layout_column="1"
@@ -182,22 +187,25 @@
 
                         <ImageView
                             android:id="@+id/depImg2"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/entc_new" />
 
                         <TextView
                             android:id="@+id/DepText2"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="ENTC"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/dep3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="0"
                         android:layout_column="2"
@@ -209,22 +217,25 @@
 
                         <ImageView
                             android:id="@+id/depImg3"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/metallurgy_new" />
 
                         <TextView
                             android:id="@+id/DepText3"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="Metallurgy"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/dep4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="0"
                         android:layout_column="3"
@@ -236,22 +247,25 @@
 
                         <ImageView
                             android:id="@+id/depImg4"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/ddgm" />
 
                         <TextView
                             android:id="@+id/DepText4"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="DDGM"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/dep5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="0"
@@ -260,26 +274,30 @@
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:padding="5dp"
+                        android:layout_marginLeft="5dp"
                         android:background="@drawable/trendingpdf_bg">
 
                         <ImageView
                             android:id="@+id/depImg5"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/civil" />
 
                         <TextView
                             android:id="@+id/DepText5"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="Civil"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/dep6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="1"
@@ -293,22 +311,25 @@
 
                         <ImageView
                             android:id="@+id/depImg6"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/mechanical" />
 
                         <TextView
                             android:id="@+id/DepText6"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="Mechanical"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/dep7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="2"
@@ -322,22 +343,25 @@
 
                         <ImageView
                             android:id="@+id/depImg7"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/it" />
 
                         <TextView
                             android:id="@+id/DepText7"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="IT"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/dep8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
                         android:orientation="vertical"
                         android:layout_row="1"
                         android:layout_column="3"
@@ -351,15 +375,18 @@
 
                         <ImageView
                             android:id="@+id/depImg8"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="55dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="5dp"
                             android:src="@drawable/electrical" />
 
                         <TextView
                             android:id="@+id/DepText8"
-                            android:layout_width="75dp"
+                            android:layout_width="65dp"
                             android:layout_height="wrap_content"
                             android:text="Electrical"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textAlignment="center" />
                     </LinearLayout>
 

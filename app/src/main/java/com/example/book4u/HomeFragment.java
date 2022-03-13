@@ -8,10 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -93,6 +100,13 @@ public class HomeFragment extends Fragment {
 //            "Operating System"
 //    };
 
+    EditText searchText;
+
+    //departments
+
+    GridLayout gridLayout;
+    String dep;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -130,6 +144,69 @@ public class HomeFragment extends Fragment {
         trendingPDFAdapter = new TrendingPDFAdapter(getContext(), pdfInfoList());
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(trendingPDFAdapter);
+
+
+        //search bar
+        EditText searchbar = view.findViewById(R.id.searchBar);
+        searchbar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (searchbar.getRight() - searchbar.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        // your action here
+                        searchText = (EditText) view.findViewById(R.id.searchBar);
+                        if(searchText == null){
+                            Toast.makeText(getContext(), "Type something in searchfield", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Intent intent = new Intent(getContext(), SearchActivity.class);
+                            intent.putExtra("searchTerm", searchText.getText().toString());
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        //departments section
+        gridLayout = (GridLayout) view.findViewById(R.id.deptIcons);
+        int childCount = gridLayout.getChildCount();
+
+        for (int i = 0; i < childCount; i++) {
+            int a = i;
+
+            LinearLayout l_conatiner = (LinearLayout) gridLayout.getChildAt(i);
+            if (i == 0){
+                dep = "Computer";
+            }else if(i == 1){
+                dep = "ENTC";
+            }else if(i == 2){
+                dep = "Metallurgy";
+            }else if(i == 3){
+                dep = "DDGM";
+            }else if(i == 4){
+                dep = "Civil";
+            }else if(i == 5){
+                dep = "Mechanical";
+            }else if(i == 6){
+                dep = "IT";
+            }else if(i == 7){
+                dep = "Electrical";
+            }
+            l_conatiner.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), SubjectActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         return view;
     }

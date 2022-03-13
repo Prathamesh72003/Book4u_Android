@@ -17,8 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/login_container"
-        android:elevation="5dp"
-        android:alpha="0.8">
+        android:elevation="5dp">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"

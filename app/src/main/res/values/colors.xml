@@ -14,9 +14,10 @@
     <color name="off_white">#FFF4EDF5</color>
     <color name="very_dark_lavander">#6C5DD3</color>
 
-    <color name="very_light_grey">#D3D3D3</color>
+    <color name="very_light_grey">#F8F5F5</color>
     <color name="cobalt_blue">#0047AB</color>
     <color name="bottom_tab_color">#3c415e</color>
+    <color name="green">#73EC59</color>
 
 
 </resources>
