@@ -282,7 +282,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Submit"
-                android:layout_marginBottom="80dp"
+                android:layout_marginBottom="30dp"
                 android:textColor="@color/white"
                 android:elevation="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"

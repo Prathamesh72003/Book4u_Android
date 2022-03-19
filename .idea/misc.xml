@@ -79,6 +79,7 @@
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_feedback.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_my_uploads.xml" value="0.2" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_onboard_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_otpactivity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
@@ -88,7 +89,9 @@
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_bookmark.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_download.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_my_uploads_pdf.xml" value="0.2" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/fragment_upload_pdf.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/notification_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/onboarding_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4u/app/src/main/res/layout/recycler_layout.xml" value="0.25416666666666665" />
