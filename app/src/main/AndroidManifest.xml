@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Book4U">
         <activity
+            android:name=".SellerDetail"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".BookDetail"
+            android:exported="false" />
+        <activity
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
@@ -36,18 +43,22 @@
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".BottomTabActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".OTPActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -56,12 +67,8 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

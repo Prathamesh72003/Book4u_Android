@@ -7,11 +7,12 @@
     tools:context=".SignUpActivity"
     android:background="@drawable/login_bg">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginContainer"
         android:layout_width="350dp"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".8"
+        app:layout_constraintHeight_percent="0.88"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +20,15 @@
         android:background="@drawable/login_container"
         android:elevation="5dp">
 
+
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/signupGIF"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".3"
+            app:layout_constraintHeight_percent=".25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0"
@@ -105,21 +108,6 @@
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/edittext_bg"
-            android:hint="Email"
-            android:padding="10dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
             android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -132,8 +120,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/number"
             app:layout_constraintWidth_percent=".8" />
+
+            <EditText
+                android:id="@+id/year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="Year"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password"
+                app:layout_constraintWidth_percent=".8"/>
+
+        <EditText
+            android:id="@+id/dept"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="Department"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/year"
+            app:layout_constraintWidth_percent=".8"/>
 
         <Button
             android:id="@+id/loginButton"
@@ -147,8 +165,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/dept"
+            android:layout_marginTop="15dp"
             app:layout_constraintWidth_percent=".5" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

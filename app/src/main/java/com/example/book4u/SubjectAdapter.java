@@ -52,6 +52,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SubjectCollectionActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                intent.putExtra("subName", subname);
                 context.startActivity(intent);
             }
