@@ -20,7 +20,22 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,12 +44,14 @@ import java.util.TimerTask;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class HomeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -97,7 +114,7 @@ public class HomeFragment extends Fragment {
 
     GridLayout gridLayout;
     String dep;
-
+    public ArrayList<TrendingPDFModel> pdfHolder = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -131,10 +148,10 @@ public class HomeFragment extends Fragment {
         //for trendingPDFS
 
         callIntent();
+        //Backend Volly implementation
         recyclerView = (RecyclerView) view.findViewById(R.id.trendingPDFs);
-        trendingPDFAdapter = new TrendingPDFAdapter(getContext(), pdfInfoList());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setAdapter(trendingPDFAdapter);
+        pdfInfoList();
+
 
 
         //search bar
@@ -212,26 +229,58 @@ public class HomeFragment extends Fragment {
         };
     }
 
-    public ArrayList<TrendingPDFModel> pdfInfoList(){
-
-        ArrayList<TrendingPDFModel> pdfHolder = new ArrayList<>();
-
-        TrendingPDFModel ob1 = new TrendingPDFModel();
-        ob1.setImgName(R.drawable.c_book);
-        ob1.setPdfName("CPP");
-        pdfHolder.add(ob1);
-
-        TrendingPDFModel ob2 = new TrendingPDFModel();
-        ob2.setImgName(R.drawable.os_book);
-        ob2.setPdfName("Operating System");
-        pdfHolder.add(ob2);
-
-        TrendingPDFModel ob3 = new TrendingPDFModel();
-        ob3.setImgName(R.drawable.java_book);
-        ob3.setPdfName("Java Programming");
-        pdfHolder.add(ob3);
-
-        return  pdfHolder;
+    public ArrayList<TrendingPDFModel> onSuccess(ArrayList<TrendingPDFModel> detailsMovies) {
+        Log.d("onSucess", detailsMovies.toString());
+        pdfHolder = detailsMovies;
+        trendingPDFAdapter = new TrendingPDFAdapter(getContext(), detailsMovies);
+        Log.d("pdfInfoList", pdfHolder.toString());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setAdapter(trendingPDFAdapter);
+        return null;
     }
+
+    public void pdfInfoList() {
+
+        //Fetching Trending pdf from mongo
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_recommendations?department_id=1", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    // ArrayList<TrendingPDFModel> pdfHold = new ArrayList<>();
+
+                    Log.d("response", response.toString());
+                    for (int i=0; i<response.length(); i++) {
+                        JSONObject obj = response.getJSONObject(i);
+                        String name = obj.getString("name");
+                        String img_url = obj.getString("img_url");
+                        TrendingPDFModel ob1 = new TrendingPDFModel();
+                        ob1.setImgName(img_url);
+                        ob1.setPdfName(name);
+                        pdfHolder.add(ob1);
+
+                    }
+                    for (int i=0; i<pdfHolder.size(); i++) {
+                        Log.d("pdfHolder", pdfHolder.get(i).getImgName().toString());
+                    }
+                    onSuccess(pdfHolder);
+                } catch (Exception e) {
+                    Log.d("responseE", e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("responseError", error.toString());
+            }
+        });
+
+        requestQueue.add(fetch);
+
+
+    }
+
+
+
 
 }

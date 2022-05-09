@@ -3,7 +3,7 @@ package com.example.book4u;
 public class TrendingPDFModel {
 
     String pdfName;
-    int imgName;
+    String imgName;
 
     public String getPdfName() {
         return pdfName;
@@ -13,11 +13,11 @@ public class TrendingPDFModel {
         this.pdfName = pdfName;
     }
 
-    public int getImgName() {
+    public String getImgName() {
         return imgName;
     }
 
-    public void setImgName(int imgName) {
+    public void setImgName(String imgName) {
         this.imgName = imgName;
     }
 }

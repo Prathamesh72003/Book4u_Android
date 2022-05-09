@@ -2,6 +2,8 @@ package com.example.book4u;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class TrendingPDFAdapter extends RecyclerView.Adapter<TrendingPDFAdapter.RecycleViewHolder> {
 
-      Context context;
+    Context context;
 //    String data[];
 //    int img[];
 
@@ -25,6 +29,8 @@ public class TrendingPDFAdapter extends RecyclerView.Adapter<TrendingPDFAdapter.
     {
         this.context = context;
         this.pdfData = pdfData;
+        Log.d("construct", pdfData.toString());
+
     }
 
     LayoutInflater layoutInflater;
@@ -45,10 +51,15 @@ public class TrendingPDFAdapter extends RecyclerView.Adapter<TrendingPDFAdapter.
     @Override
     public void onBindViewHolder(@NonNull RecycleViewHolder holder, int position) {
 
-            final TrendingPDFModel tempModel = pdfData.get(position);
+        final TrendingPDFModel tempModel = pdfData.get(position);
 
-            holder.textView.setText(pdfData.get(position).getPdfName());
-            holder.imageView.setImageResource(pdfData.get(position).getImgName());
+        holder.textView.setText(pdfData.get(position).getPdfName());
+        //holder.imageView.setImageURI(Uri.parse(pdfData.get(position).getImgName()));
+        Picasso
+                .get()
+                .load(pdfData.get(position).getImgName())
+                .into(holder.imageView);
+        Log.d("img_uri", pdfData.get(position).getImgName());
 
         holder.pdfCV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,12 +84,12 @@ public class TrendingPDFAdapter extends RecyclerView.Adapter<TrendingPDFAdapter.
         TextView textView;
         CardView pdfCV;
 
-         public RecycleViewHolder(@NonNull View itemView) {
-             super(itemView);
-             imageView = (ImageView) itemView.findViewById(R.id.pdfImg);
-             textView = (TextView) itemView.findViewById(R.id.pdfName);
-             pdfCV = (CardView) itemView.findViewById(R.id.pdfCardview);
-         }
+        public RecycleViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = (ImageView) itemView.findViewById(R.id.pdfImg);
+            textView = (TextView) itemView.findViewById(R.id.pdfName);
+            pdfCV = (CardView) itemView.findViewById(R.id.pdfCardview);
+        }
 
         @Override
         public void onClick(View view) {
@@ -86,7 +97,7 @@ public class TrendingPDFAdapter extends RecyclerView.Adapter<TrendingPDFAdapter.
         }
     }
 
-     public interface OnClickListenerInterface{
+    public interface OnClickListenerInterface{
         void listener(View v, int position);
-     }
+    }
 }

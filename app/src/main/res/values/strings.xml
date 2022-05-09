@@ -9,4 +9,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="upload_a_pdf">upload a pdf</string>
+    <string name="baseUrl">https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/book4u-gmvsx/service/book4u/incoming_webhook/</string>
 </resources>
