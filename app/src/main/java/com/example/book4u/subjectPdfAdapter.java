@@ -1,7 +1,6 @@
 package com.example.book4u;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 public class subjectPdfAdapter extends RecyclerView.Adapter<subjectPdfAdapter.ViewHolder>{
 
     Context context;
     LayoutInflater layoutInflater;
     View view;
-    int Img[];
+    String[] Img;
     String name[];
     String subjectname[];
     String subname;
 
-    public subjectPdfAdapter (Context context, int[] Img, String[] name, String[] subjectname) {
+    public subjectPdfAdapter (Context context, String[] Img, String[] name, String[] subjectname) {
         this.context = context;
         this.view = view;
         this.Img = Img;
@@ -41,7 +42,10 @@ public class subjectPdfAdapter extends RecyclerView.Adapter<subjectPdfAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull subjectPdfAdapter.ViewHolder holder, int position) {
-        holder.img.setImageResource(Img[position]);
+        Picasso
+                .get()
+                .load(Img[position])
+                .into(holder.img);
         holder.tv.setText(name[position]);
     }
 

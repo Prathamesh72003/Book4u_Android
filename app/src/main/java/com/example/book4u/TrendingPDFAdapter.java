@@ -67,6 +67,7 @@ public class TrendingPDFAdapter extends RecyclerView.Adapter<TrendingPDFAdapter.
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("imgName", tempModel.getImgName());
                 intent.putExtra("pdfName", tempModel.getPdfName());
+                intent.putExtra("pdfId", tempModel.getId());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

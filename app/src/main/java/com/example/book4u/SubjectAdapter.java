@@ -1,5 +1,6 @@
 package com.example.book4u;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,28 +8,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHolder>{
 
     Context context;
     LayoutInflater layoutInflater;
     View view;
-    int Img[];
+    String Img[];
     String name[];
     String numofpdfp[];
+    String subids[];
     String subname;
 
-    public SubjectAdapter(Context context, int[] Img, String[] name, String[] numofpdf) {
+    public SubjectAdapter(Context context, String[] Img, String[] name, String[] numofpdf,String[] subids) {
         this.context = context;
         this.view = view;
         this.Img = Img;
         this.name = name;
         this.numofpdfp = numofpdf;
+        this.subids = subids;
     }
 
     @NonNull
@@ -41,19 +45,23 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.img.setImageResource(Img[position]);
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        Picasso
+                .get()
+                .load(Img[position])
+                .into(holder.img);
         holder.tv.setText(name[position]);
         holder.subtitle.setText(numofpdfp[position]);
 
-//        subname = holder.tv.getText().toString();
+        subname = holder.tv.getText().toString();
 
         holder.subcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, SubjectCollectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.putExtra("subName", subname);
+                intent.putExtra("subName", name[position]);
+                intent.putExtra("subids", subids[position]);
                 context.startActivity(intent);
             }
         });

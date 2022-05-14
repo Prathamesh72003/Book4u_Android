@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -12,11 +14,17 @@ public class SubjectCollectionActivity extends AppCompatActivity {
     TabLayout subCollectionTabLayout;
     ViewPager subCollectionViewPager;
     SubjectCollectionAdapter subjectCollectionAdapter;
+    TextView sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_collection);
+
+        sub = (TextView) findViewById(R.id.SubText);
+
+        sub.setText(getIntent().getStringExtra("subName"));
+        String subid = getIntent().getStringExtra("subids");
 
         subCollectionTabLayout = (TabLayout) findViewById(R.id.SubjectCollectionTabLayout);
         subCollectionViewPager = (ViewPager) findViewById(R.id.SubjectCollectionViewPager);

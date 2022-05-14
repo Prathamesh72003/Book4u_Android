@@ -30,7 +30,6 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/trendingpdf_bg"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cpp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +85,7 @@
                     app:blk_cornerRadius="30dp"
                     app:blk_downscaleFactor="0.1"
                     app:blk_fps="0"
+                    android:background="#ADC3FA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -104,7 +104,6 @@
                         android:id="@+id/title"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="Operating System book"
                         android:textColor="@color/black"
                         android:maxLines="1"
                         android:ellipsize="end"
@@ -118,7 +117,6 @@
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="Operating System"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:maxLines="1"
@@ -156,7 +154,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="89"
                             android:textColor="@color/white"
                             android:textSize="20sp" />
 
@@ -183,7 +180,6 @@
                         android:gravity="center"
                         android:maxLines="1"
                         android:padding="5dp"
-                        android:text="~ Siddhesh Shinde"
                         android:textColor="@color/white"
                         android:textSize="18dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -221,10 +217,10 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/showDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Android ImageViews by default don't have an option to set a corner radius. William J. Francis shares a quick hack that does the trick in a layout file without writing any actual code. "
                     android:textColor="@color/grey"
                     android:textSize="16sp" />
             </LinearLayout>

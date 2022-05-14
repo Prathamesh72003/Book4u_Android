@@ -46,7 +46,8 @@ import java.util.TimerTask;
  */
 
 public class HomeFragment extends Fragment {
-
+    String user;
+    String dep_id;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,8 +58,15 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    public HomeFragment(String userId, String dep) {
+        user = userId;
+        dep_id = dep;
+        Log.d("TAGf", "HomeFragment: "+user);
+        Log.d("TAGf", "HomeFragment: "+dep_id);
+    }
+
     public HomeFragment() {
-        // Required empty public constructor
+
     }
 
     /**
@@ -120,7 +128,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.fragment_home, container,false);
+        final View view = inflater.inflate(R.layout.fragment_home, container,false);
 
         //for carousel
         recyclerView = (RecyclerView) view.findViewById(R.id.carousel);
@@ -155,7 +163,7 @@ public class HomeFragment extends Fragment {
 
 
         //search bar
-        EditText searchbar = view.findViewById(R.id.searchBar);
+        final EditText searchbar = view.findViewById(R.id.searchBar);
         searchbar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -240,10 +248,10 @@ public class HomeFragment extends Fragment {
     }
 
     public void pdfInfoList() {
-
+//        Toast.makeText(getContext(), ""+dep_id, Toast.LENGTH_SHORT).show();
         //Fetching Trending pdf from mongo
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_recommendations?department_id=1", null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_recommendations?department_id="+dep_id, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
@@ -252,9 +260,11 @@ public class HomeFragment extends Fragment {
                     Log.d("response", response.toString());
                     for (int i=0; i<response.length(); i++) {
                         JSONObject obj = response.getJSONObject(i);
+                        String id = obj.getString("id");
                         String name = obj.getString("name");
                         String img_url = obj.getString("img_url");
                         TrendingPDFModel ob1 = new TrendingPDFModel();
+                        ob1.setId(id);
                         ob1.setImgName(img_url);
                         ob1.setPdfName(name);
                         pdfHolder.add(ob1);

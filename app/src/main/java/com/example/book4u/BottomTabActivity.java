@@ -3,7 +3,10 @@ package com.example.book4u;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -11,11 +14,20 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 public class BottomTabActivity extends AppCompatActivity {
     MeowBottomNavigation meowBottomNavigation;
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String SHARED_ID = "local_userid";
+    public static final String SHARED_DEPARTMENT = "local_depid";
+    SharedPreferences sharedpreferences;
+    String userid,dep;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_tab);
 
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        userid = sharedpreferences.getString(SHARED_ID, null);
+        dep = sharedpreferences.getString(SHARED_DEPARTMENT, null);
         meowBottomNavigation = (MeowBottomNavigation) findViewById(R.id.bottomTab);
 
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_home));
@@ -32,7 +44,7 @@ public class BottomTabActivity extends AppCompatActivity {
 
                 switch (item.getId()){
                     case 1:
-                        fragment = new HomeFragment();
+                        fragment = new HomeFragment(userid,dep);
                         break;
 
                     case 2:

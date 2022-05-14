@@ -6,9 +6,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,10 +87,48 @@ public class MyUploadsPdf extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_uploads_pdf, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.myUploadsPdfRcyl);
-        myUploadsPdfAdapter = new MyUploadsPdfAdapter(getContext(), pdfImg, pdfName);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(myUploadsPdfAdapter);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        String user_id = "613f8323c9fad3ccf92f1c0a";
+        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_users_pdf?id="+user_id, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                String[] id = new String[response.length()];
+                String[] pdfName = new String[response.length()];
+                String[] imgUrl = new String[response.length()];
+                String[] pdfUrl = new String[response.length()];
+                String[] viewers = new String[response.length()];
+                String[] status = new String[response.length()];
+                String[] status_color = new String[response.length()];
+
+
+                try{
+                    for(int i=0; i<response.length(); i++){
+                        JSONObject obj = response.getJSONObject(i);
+                        id[i] = obj.getString("id");
+                        pdfName[i] = obj.getString("name");
+                        imgUrl[i] = obj.getString("img_url");
+                        pdfUrl[i] = obj.getString("pdf_url");
+                        viewers[i] = obj.getString("viewers");
+                        status[i] = obj.getString("status");
+                        status_color[i] = obj.getString("status_color");
+                    }
+                    recyclerView = (RecyclerView) view.findViewById(R.id.myUploadsPdfRcyl);
+                    myUploadsPdfAdapter = new MyUploadsPdfAdapter(getContext(), id, pdfName, imgUrl, viewers, status);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                    recyclerView.setAdapter(myUploadsPdfAdapter);
+                }catch (Exception e){
+                    Log.d("MyUploadsPdf", e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("MyUploadsPdf", error.toString());
+            }
+        });
+        requestQueue.add(fetch);
+
+
         return view;
     }
 }

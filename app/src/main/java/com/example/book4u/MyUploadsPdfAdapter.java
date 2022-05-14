@@ -11,18 +11,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ConcatAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
+
 public class MyUploadsPdfAdapter extends RecyclerView.Adapter<MyUploadsPdfAdapter.MyUploadsPdfViewHolder> {
 
     View view;
     Context context;
     LayoutInflater layoutInflater;
-    int img[];
-    String[] pdf_name;
 
-    public MyUploadsPdfAdapter(Context context, int[] img, String[] pdf_name) {
+    String id[];
+    String[] pdfName;
+    String[] imgUrl;
+    String[] viewers;
+    String[] status;
+
+    public MyUploadsPdfAdapter(Context context, String[] id, String[] pdfName, String[] imgUrl, String[] viewers, String[] status) {
         this.context = context;
-        this.img = img;
-        this.pdf_name = pdf_name;
+        this.id = id;
+        this.pdfName = pdfName;
+        this.imgUrl = imgUrl;
+        this.viewers = viewers;
+        this.status = status;
     }
 
     @NonNull
@@ -36,24 +47,33 @@ public class MyUploadsPdfAdapter extends RecyclerView.Adapter<MyUploadsPdfAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyUploadsPdfViewHolder holder, int position) {
-        holder.imageView.setImageResource(img[position]);
-        holder.textView.setText(pdf_name[position]);
+        Picasso
+                .get()
+                .load(imgUrl[position])
+                .into(holder.imageView);
+        holder.textView.setText(pdfName[position]);
+        holder.pdfStatus.setText(status[position]);
+        holder.pdfViewers.setText(viewers[position]);
     }
 
     @Override
     public int getItemCount() {
-        return img.length;
+        return imgUrl.length;
     }
 
     public class MyUploadsPdfViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textView;
+        TextView pdfStatus;
+        TextView pdfViewers;
 
         public MyUploadsPdfViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.pdfImg);
             textView = (TextView) itemView.findViewById(R.id.Pdf_name);
+            pdfStatus = (TextView) itemView.findViewById(R.id.pdfStatus);
+            pdfViewers = (TextView) itemView.findViewById(R.id.pdfViewers);
         }
     }
 }

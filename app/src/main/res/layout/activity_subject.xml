@@ -42,11 +42,11 @@
                 android:text="Subjects for "
                 android:textSize="16sp"
                 />
+
             <TextView
                 android:id="@+id/depName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Computer"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "701435201179",
+    "project_id": "book4u-b35e9",
+    "storage_bucket": "book4u-b35e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701435201179:android:4b7d79208ea65d74e4683e",
+        "android_client_info": {
+          "package_name": "com.example.book4u"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701435201179-0it47huihvvlb1l762tsbr4t61s7od66.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.book4u",
+            "certificate_hash": "4e07530421079c3e3ddb629c670aa54fa43f5eb7"
+          }
+        },
+        {
+          "client_id": "701435201179-rfmgon3su1q83k9d68f3pldo7mp86sgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsI_loHUs1QkgRR_80IElzf4dias-IsG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701435201179-rfmgon3su1q83k9d68f3pldo7mp86sgr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

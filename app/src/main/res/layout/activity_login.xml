@@ -78,7 +78,7 @@
             android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Username"
             android:background="@drawable/edittext_bg"
             android:padding="10dp"
             android:maxLines="1"

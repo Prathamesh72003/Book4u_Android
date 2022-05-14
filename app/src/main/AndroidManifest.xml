@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.book4u">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.book4u">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,8 +15,7 @@
         android:theme="@style/Theme.Book4U">
         <activity
             android:name=".SellerDetail"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".BookDetail"
             android:exported="false" />
@@ -34,9 +35,6 @@
             android:name=".MyUploadsActivity"
             android:exported="false" />
         <activity
-            android:name=".SubjectPdfActivity"
-            android:exported="false" />
-        <activity
             android:name=".SubjectActivity"
             android:exported="false" />
         <activity
@@ -48,31 +46,29 @@
         <activity
             android:name=".BottomTabActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".OTPActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
 
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
         <activity
             android:name=".onboardMain"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
