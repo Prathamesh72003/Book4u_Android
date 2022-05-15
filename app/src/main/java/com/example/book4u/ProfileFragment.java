@@ -1,6 +1,8 @@
 package com.example.book4u;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +20,11 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String SHARED_USER = "local_user";
+
+    String user;
+    SharedPreferences sharedpreferences;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,12 +68,17 @@ public class ProfileFragment extends Fragment {
 
     Button fbtn,edbtn;
     ConstraintLayout myUploadsBtn,notibtn;
+    TextView wt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        sharedpreferences =  this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        user = sharedpreferences.getString(SHARED_USER, null);
+        wt = (TextView) view.findViewById(R.id.welcomeText);
+        wt.setText("Welcome, "+user);
 
         fbtn = view.findViewById(R.id.feedbackBtn);
 

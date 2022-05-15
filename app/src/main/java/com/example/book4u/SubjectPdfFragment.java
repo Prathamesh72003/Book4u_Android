@@ -96,6 +96,7 @@ public class SubjectPdfFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_subject_pdf, container, false);
 
+        String id = this.getArguments().getString("subids");;
         RequestQueue rq = Volley.newRequestQueue(getActivity());
         JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_subject_pdf?id=61e5477b4e2fe8b523010395&page=0", null, new Response.Listener<JSONArray>() {
             @Override
@@ -103,6 +104,7 @@ public class SubjectPdfFragment extends Fragment {
                 String[] pdfname = new String[response.length()];
                 String[] subimg = new String[response.length()];
                 String[] dis = new String[response.length()];
+                String[] pdf_id = new String[response.length()];
                 try {
                     // ArrayList<TrendingPDFModel> pdfHold = new ArrayList<>();
 
@@ -113,9 +115,11 @@ public class SubjectPdfFragment extends Fragment {
                         String name = obj.getString("name");
                         String img_url = obj.getString("img_url");
                         String des = obj.getString("description");
+                        String pdf = obj.getString("_id");
                         pdfname[i] = name.toString();
                         subimg[i] = img_url.toString();
                         dis[i] = des.toString();
+                        pdf_id[i] = pdf.toString();
                         Log.d("res", "name: "+name);
                         Log.d("res", "image: "+img_url);
                         Log.d("res", "count: "+des);
@@ -128,8 +132,8 @@ public class SubjectPdfFragment extends Fragment {
 
                     }
                     recyclerView = (RecyclerView) view.findViewById(R.id.SubPdfRecycler);
-                    subjectPdfAdapter1 = new subjectPdfAdapter(getContext(), subimg, pdfname,dis);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                    subjectPdfAdapter1 = new subjectPdfAdapter(getActivity(), subimg, pdfname,dis,pdf_id);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                     recyclerView.setAdapter(subjectPdfAdapter1);
 
 

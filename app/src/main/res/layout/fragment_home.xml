@@ -190,13 +190,13 @@
                             android:layout_width="55dp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/entc_new" />
+                            android:src="@drawable/it" />
 
                         <TextView
                             android:id="@+id/DepText2"
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
-                            android:text="ENTC"
+                            android:text="IT"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:textAlignment="center" />
@@ -220,13 +220,13 @@
                             android:layout_width="55dp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/metallurgy_new" />
+                            android:src="@drawable/civil" />
 
                         <TextView
                             android:id="@+id/DepText3"
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
-                            android:text="Metallurgy"
+                            android:text="Civil"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:textAlignment="center" />
@@ -250,13 +250,13 @@
                             android:layout_width="55dp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/ddgm" />
+                            android:src="@drawable/mechanical" />
 
                         <TextView
                             android:id="@+id/DepText4"
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
-                            android:text="DDGM"
+                            android:text="Mechanical"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:textAlignment="center" />
@@ -282,13 +282,13 @@
                             android:layout_width="55dp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/civil" />
+                            android:src="@drawable/metallurgy_new" />
 
                         <TextView
                             android:id="@+id/DepText5"
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
-                            android:text="Civil"
+                            android:text="Metallurgy"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:textAlignment="center" />
@@ -314,13 +314,13 @@
                             android:layout_width="55dp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/mechanical" />
+                            android:src="@drawable/entc_new" />
 
                         <TextView
                             android:id="@+id/DepText6"
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
-                            android:text="Mechanical"
+                            android:text="ENTC"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:textAlignment="center" />
@@ -346,13 +346,13 @@
                             android:layout_width="55dp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/it" />
+                            android:src="@drawable/electrical" />
 
                         <TextView
                             android:id="@+id/DepText7"
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
-                            android:text="IT"
+                            android:text="Electrical"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:textAlignment="center" />
@@ -378,13 +378,13 @@
                             android:layout_width="55dp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/electrical" />
+                            android:src="@drawable/ddgm" />
 
                         <TextView
                             android:id="@+id/DepText8"
                             android:layout_width="65dp"
                             android:layout_height="wrap_content"
-                            android:text="Electrical"
+                            android:text="DDGM"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:textAlignment="center" />

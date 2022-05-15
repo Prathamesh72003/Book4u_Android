@@ -12,7 +12,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/off_white"
         android:id="@+id/subPdfCard">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,6 +75,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Java Programming"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         app:layout_constraintBaseline_toBaselineOf="@+id/subjectPdfText"
                         app:layout_constraintStart_toEndOf="@+id/subjectPdfText" />
                 </LinearLayout>

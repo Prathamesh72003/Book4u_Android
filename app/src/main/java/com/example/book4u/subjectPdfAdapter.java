@@ -1,6 +1,8 @@
 package com.example.book4u;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +24,15 @@ public class subjectPdfAdapter extends RecyclerView.Adapter<subjectPdfAdapter.Vi
     String name[];
     String subjectname[];
     String subname;
+    String[] pdf_id;
 
-    public subjectPdfAdapter (Context context, String[] Img, String[] name, String[] subjectname) {
+    public subjectPdfAdapter (Context context, String[] Img, String[] name, String[] subjectname, String[] pdf_id) {
         this.context = context;
         this.view = view;
         this.Img = Img;
         this.name = name;
         this.subjectname = subjectname;
+        this.pdf_id = pdf_id;
     }
 
     @NonNull
@@ -41,12 +45,25 @@ public class subjectPdfAdapter extends RecyclerView.Adapter<subjectPdfAdapter.Vi
 
 
     @Override
-    public void onBindViewHolder(@NonNull subjectPdfAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull subjectPdfAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Picasso
                 .get()
                 .load(Img[position])
                 .into(holder.img);
         holder.tv.setText(name[position]);
+        holder.subtitle.setText("Subject "+subjectname[position]);
+
+        holder.subPdfcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("pdfId", pdf_id[position]);
+                intent.putExtra("imgName", Img[position]);
+                intent.putExtra("pdfName", name[position]);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -64,6 +81,7 @@ public class subjectPdfAdapter extends RecyclerView.Adapter<subjectPdfAdapter.Vi
             img = itemView.findViewById(R.id.subPdfImg);
             tv = itemView.findViewById(R.id.subPdfName);
             subtitle = itemView.findViewById(R.id.subjectofpdf);
+            subPdfcard = itemView.findViewById(R.id.subPdfCard);
         }
     }
 }

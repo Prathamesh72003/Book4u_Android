@@ -53,7 +53,6 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/btn_bg"
                 android:padding="10dp"
-                android:src="@drawable/ic_bookmark_detailpage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -247,14 +246,14 @@
                 android:textAllCaps="false"
                 android:textColor="@color/cobalt_blue"
                 app:cornerRadius="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/readNiwBtn"
+                app:layout_constraintEnd_toStartOf="@+id/readNowBtn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeColor="@color/grey"
                 app:strokeWidth="2dp" />
 
             <Button
-                android:id="@+id/readNiwBtn"
+                android:id="@+id/readNowBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Read Now"

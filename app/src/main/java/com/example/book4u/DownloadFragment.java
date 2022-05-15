@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.io.File;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,11 +76,33 @@ public class DownloadFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString()+"/.book4u";
+        File directory = new File(path);
+        File[] files = directory.listFiles();
+        Log.d("Files", "path: "+ path);
+
         View view = inflater.inflate(R.layout.fragment_download, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.downloadPDFsRecyclerView);
-        downloadAdapter = new DownloadAdapter(getContext(), img, heading,totalDownloads, dates);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), linearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(downloadAdapter);
+
+        if(directory.canRead() && files!=null) {
+            Log.d("Files", "Size: "+ files.length);
+//            String[] id = new String[files.length];
+//            String[] img = new String[files.length];
+            String[] name = new String[files.length];
+//            String[] subject_name = new String[files.length];
+            String[] local_path = new String[files.length];
+
+            for (int i = 0; i < files.length; i++) {
+                Log.d("Files", "FileName:" + files[i]);
+                name[i] = files[i].getName();
+                local_path[i] = files[i].getAbsolutePath();
+            }
+
+            recyclerView = (RecyclerView) view.findViewById(R.id.downloadPDFsRecyclerView);
+            downloadAdapter = new DownloadAdapter(getContext(), name, local_path);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), linearLayoutManager.VERTICAL, false));
+            recyclerView.setAdapter(downloadAdapter);
+        }
+
         return view;
     }
 }

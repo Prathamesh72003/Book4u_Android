@@ -76,7 +76,7 @@
                    android:id="@+id/welcomeText"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="Welcome, Ajinkya"
+                   android:text=""
                    android:layout_marginTop="5dp"
                    android:textSize="18sp"
                    android:textColor="@color/black"

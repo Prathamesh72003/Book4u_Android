@@ -43,19 +43,19 @@ public class SubjectActivity extends AppCompatActivity {
         if (cat_id == 1){
             dep_name.setText("Computer");
         }else if(cat_id == 2){
-            dep_name.setText("ENTC");
-        }else if(cat_id == 3){
-            dep_name.setText("Metullargy");
-        }else if(cat_id == 4){
-            dep_name.setText("DDGM");
-        }else if(cat_id == 5){
-            dep_name.setText("Civil");
-        }else if(cat_id == 6){
-            dep_name.setText("Mechanical");
-        }else if(cat_id == 7){
             dep_name.setText("IT");
-        }else if(cat_id == 8){
+        }else if(cat_id == 3){
+            dep_name.setText("Civil");
+        }else if(cat_id == 4){
+            dep_name.setText("Mechanical");
+        }else if(cat_id == 5){
+            dep_name.setText("Metallurgy");
+        }else if(cat_id == 6){
+            dep_name.setText("ENTC");
+        }else if(cat_id == 7){
             dep_name.setText("Electrical");
+        }else if(cat_id == 8){
+            dep_name.setText("DDGM");
         }
         recyclerView = (RecyclerView) findViewById(R.id.subjectRecyclerView);
         RequestQueue rq = Volley.newRequestQueue(this);

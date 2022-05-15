@@ -51,14 +51,14 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
                 .load(Img[position])
                 .into(holder.img);
         holder.tv.setText(name[position]);
-        holder.subtitle.setText(numofpdfp[position]);
+        holder.subtitle.setText("Pdfs: "+numofpdfp[position]);
 
         subname = holder.tv.getText().toString();
 
         holder.subcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, SubjectCollectionActivity.class);
+                Intent intent = new Intent(context, SubPdfActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("subName", name[position]);
                 intent.putExtra("subids", subids[position]);

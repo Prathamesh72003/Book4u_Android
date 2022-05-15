@@ -1,5 +1,7 @@
 package com.example.book4u;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -29,6 +31,11 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class MyUploadsPdf extends Fragment {
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String SHARED_ID = "local_userid";
+
+    String userid;
+    SharedPreferences sharedpreferences;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,8 +94,11 @@ public class MyUploadsPdf extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_uploads_pdf, container, false);
 
+        sharedpreferences =  this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        userid = sharedpreferences.getString(SHARED_ID, null);
+
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        String user_id = "613f8323c9fad3ccf92f1c0a";
+        String user_id = userid;
         JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_users_pdf?id="+user_id, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

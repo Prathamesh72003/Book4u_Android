@@ -1,14 +1,18 @@
 package com.example.book4u;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,7 +31,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -97,16 +112,41 @@ public class UploadPdfFragment extends Fragment {
     //    String[] subs;
     AutoCompleteTextView SubtautoCompleteTxt;
     ArrayAdapter<String> SubtadapterItems;
+    //firebase;
+    FirebaseStorage storage;
+    FirebaseDatabase database;
+    File myFile;
+    String url;
+    Uri pdfUrl; //Uri are actually urls
+    Button pdfUploadBtn;
+    ProgressDialog progressDialog;
+    TextView notification;
 
     TextInputEditText nameText,descText;
     AutoCompleteTextView auto_complete_txt,dept_autocomplete,sub_autocomplete;
     Button submit;
+
+    String main_url;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_upload_pdf, container, false);
+        pdfUploadBtn = view.findViewById(R.id.pdfUploadBtn);
+        notification = view.findViewById(R.id.Notify);
+
+        pdfUploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    storeInFirebase();
+                } else {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1212);
+                }
+
+            }
+        });
 
         autoCompleteTxt = view.findViewById(R.id.auto_complete_txt);
 
@@ -154,26 +194,22 @@ public class UploadPdfFragment extends Fragment {
 
         submit = view.findViewById(R.id.SubmitButton);
         nameText = view.findViewById(R.id.nameText);
-        descText = view.findViewById(R.id.descText);
-        auto_complete_txt = view.findViewById(R.id.auto_complete_txt);
-        dept_autocomplete = view.findViewById(R.id.dept_autocomplete);
-        sub_autocomplete = view.findViewById(R.id.sub_autocomplete);
+        descText =  (TextInputEditText) view.findViewById(R.id.descText);
+        auto_complete_txt = (AutoCompleteTextView) view.findViewById(R.id.auto_complete_txt);
+        dept_autocomplete = (AutoCompleteTextView) view.findViewById(R.id.dept_autocomplete);
+        sub_autocomplete = (AutoCompleteTextView) view.findViewById(R.id.sub_autocomplete);
 
-        Button pdfUploadBtn = view.findViewById(R.id.pdfUploadBtn);
-        pdfUploadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                intent.setType("application/pdf");
-//                startActivity(intent);
-                startActivityForResult(intent, 1212);
-            }
-        });
+
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                if (pdfUrl==null) {
+//                    sendPdf(pdfUrl);
+//                }else {
+//                    Toast.makeText(getActivity(), "Select a file", Toast.LENGTH_SHORT).show();
+//                }
                 uploadPdf();
             }
         });
@@ -181,39 +217,29 @@ public class UploadPdfFragment extends Fragment {
         return view;
     }
 
-    public void uploadPdf() {
-        if (nameText.getText().length()!=0 && descText.getText().length()!=0 && auto_complete_txt.getText().length()!=0 && dept_autocomplete.getText().length()!=0 && sub_autocomplete.getText().length()!=0) {
-            RequestQueue requestQueue= Volley.newRequestQueue(getActivity());
 
-            JSONObject dataParam = new JSONObject();
-            try {
-                dataParam.put("name", nameText.getText().toString());
-                dataParam.put("uploader_id", "613f8323c9fad3ccf92f1c0a");
-                dataParam.put("pdf_url","http://www.africau.edu/images/default/sample.pdf");
-                dataParam.put("img_url", "https://sample-videos.com/img/Sample-jpg-image-500kb.jpg");
-                dataParam.put("department_id", dept_id_selected);
-                dataParam.put("subject_id", subject_id_selected);
-                dataParam.put("Description", descText.getText().toString());
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            JsonObjectRequest putData = new JsonObjectRequest(Request.Method.POST, getString(R.string.baseUrl) + "upload_pdf", dataParam, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Toast.makeText(getContext(), "Pdf uploaded successfully", Toast.LENGTH_SHORT).show();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                }
-            });
-            requestQueue.add(putData);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1212 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            storeInFirebase();
         }else {
-            Toast.makeText(getActivity(), "All fields required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please give the permission to select PDF", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void storeInFirebase(){
+        storage = FirebaseStorage.getInstance();
+        database = FirebaseDatabase.getInstance();
+        //offer user to selct the pdf from file manager
+        //for this we will use Intent
+        Intent intent = new Intent();
+        intent.setType("application/pdf");
+        intent.setAction(Intent.ACTION_GET_CONTENT);// to fetch files
+        startActivityForResult(intent, 1212);
+    }
+
+
 
     public void getDepartmentSubject(int id){
         Log.d("upload", id+"");
@@ -251,41 +277,122 @@ public class UploadPdfFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case 1212:
-                if (resultCode == Activity.RESULT_OK) {
-                    // Get the Uri of the selected file
-                    Uri uri = data.getData();
-                    String uriString = uri.toString();
-                    File myFile = new File(uriString);
-                    String path = myFile.getAbsolutePath();
+        //check wehter user has selected a file or not
 
-                    // after setting up firebase this is the code to upload file to fireabse and get pdf url in return
-//                    if(file.exists()) {
-//                        UploadTask uploadTask = riversRef.putFile(Uri.fromFile(file),metadata);
-//                        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//                            @Override
-//                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                                if (!task.isSuccessful()) {
-//                                    throw task.getException();
-//                                }
-//
-//                                // Continue with the task to get the download URL
-//                                return riversRef.getDownloadUrl();
-//                            }
-//                        }).addOnCompleteListener(task -> {
-//                            if (task.isSuccessful()) {
-//                                Uri downloadUri = task.getResult();
-//                                getUploadedMediaPath.getUploadedFileUrl(downloadUri.toString());
-//                            }
-//                        });
-//                    }
+        if (resultCode == Activity.RESULT_OK && requestCode == 1212 && data != null) {
+            // Get the Uri of the selected file
+            pdfUrl = data.getData();
+            String uriString = pdfUrl.toString();
+            Log.d("second", "Firebaseurl: "+pdfUrl);
+            myFile = new File(uriString);
+            String path = myFile.getAbsolutePath();
+            notification.setText("file: "+ data.getData().getLastPathSegment());
 
-                    Log.d("upload", uriString);
-                }
-                break;
+
+            Log.d("upload", uriString);
+        }else {
+            Toast.makeText(getActivity(), "Please select the PDF", Toast.LENGTH_SHORT).show();
         }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    private String sendPdf(Uri pdfUrl) {
+        String[] firebasePdfurl = {""};
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setTitle("Uploading file...");
+        progressDialog.setProgress(0);
+        progressDialog.show();
+        StorageReference storageReference = storage.getReference(); //returns the path
+        String fileName = System.currentTimeMillis()+"";
+        StorageReference ref = storageReference.child(fileName);
+        storageReference.child(fileName).putFile(pdfUrl)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        url = taskSnapshot.toString();
+//                        main_url = storageReference.toString();
+                        DatabaseReference databaseReference = database.getReference();
+                        databaseReference.child(fileName).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getContext(), "File Successfully uploaded!"+url, Toast.LENGTH_SHORT).show();
+                                    main_url = ref.getDownloadUrl().toString();
+                                    Log.d("insideact", "onComplete: "+ref.getDownloadUrl());
+                                }else {
+                                    Toast.makeText(getContext(), "File not Successfully uploaded!", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+
+                UploadTask.TaskSnapshot uri = task.getResult();
+//                main_url = storageReference.getDownloadUrl().toString();
+                Uri uri1 = uri.getUploadSessionUri();
+                firebasePdfurl[0] = uri1.getLastPathSegment();
+//                main_url = Arrays.toString(firebasePdfurl);
+                Log.d("insideact", "onComplete: "+Arrays.toString(firebasePdfurl));
+                Log.d("insideact", "onComplete: "+uri1.toString());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "File Successfully not upladed", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                int current = (int) ((int) 100*snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                progressDialog.setProgress(current);
+            }
+        });
+        Log.d("firebaseUrl",firebasePdfurl[0]);
+//        main_url = firebasePdfurl.toString();
+        return firebasePdfurl[0];
+    }
+
+
+    public void uploadPdf() {
+        if (nameText.getText().length() != 0) {
+            RequestQueue requestQueue= Volley.newRequestQueue(getActivity());
+            String firebasePdfUrl = sendPdf(pdfUrl);
+            Log.d("fbpdf", "uploadPdf: "+firebasePdfUrl);
+            Toast.makeText(getContext(), ""+main_url, Toast.LENGTH_SHORT).show();
+            JSONObject dataParam = new JSONObject();
+            try {
+                dataParam.put("name", nameText.getText().toString());
+                dataParam.put("uploader_id", "613f8323c9fad3ccf92f1c0a");
+                dataParam.put("pdf_url", "test"+main_url);
+                dataParam.put("img_url", "https://sample-videos.com/img/Sample-jpg-image-500kb.jpg");
+                dataParam.put("department_id", dept_id_selected);
+                dataParam.put("subject_id", subject_id_selected);
+                dataParam.put("Description", descText.getText().toString());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            JsonObjectRequest putData = new JsonObjectRequest(Request.Method.POST, getString(R.string.baseUrl) + "upload_pdf", dataParam, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText(getContext(), "Pdf uploaded successfully", Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+            requestQueue.add(putData);
+        }else {
+            Toast.makeText(getActivity(), "All fields required", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

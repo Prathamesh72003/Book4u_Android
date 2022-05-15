@@ -98,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                             editor.apply();
                             Intent intent = new Intent(getApplicationContext(), BottomTabActivity.class);
                             startActivity(intent);
+                            finish();
                         }else{
                             Toast.makeText(getApplicationContext(), "Verification Pending!", Toast.LENGTH_SHORT).show();
                         }

@@ -2,6 +2,8 @@ package com.example.book4u;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,15 +26,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FeedbackActivity extends AppCompatActivity {
-
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String SHARED_ID = "local_userid";
+    String userid;
+    SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        userid = sharedpreferences.getString(SHARED_ID, null);
         EditText feedbackField = (EditText) findViewById(R.id.feedbackField);
 
-        String user_id = "613f8323c9fad3ccf92f1c0a";
+        String user_id = userid;
 
         Button feednackSubmitBtn = (Button) findViewById(R.id.feednackSubmitBtn);
         feednackSubmitBtn.setOnClickListener(new View.OnClickListener() {

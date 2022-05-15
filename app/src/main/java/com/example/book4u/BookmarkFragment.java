@@ -33,7 +33,7 @@ import java.util.Arrays;
  * create an instance of this fragment.
  */
 public class BookmarkFragment extends Fragment {
-
+    String u_id;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,8 +43,12 @@ public class BookmarkFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    public BookmarkFragment(String user_id) {
+        u_id = user_id;
+    }
+
     public BookmarkFragment() {
-        // Required empty public constructor
+
     }
 
     /**
@@ -108,7 +112,7 @@ public class BookmarkFragment extends Fragment {
     private void getBookmarkPDF() {
         //String imgUrls[], heading[], totalReaders[], descriptions[];
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_bookmarks?user_id=613f8323c9fad3ccf92f1c0a", null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_bookmarks?user_id="+u_id, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 String imgUrls[] = new String[response.length()];

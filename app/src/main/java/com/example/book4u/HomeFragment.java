@@ -117,6 +117,7 @@ public class HomeFragment extends Fragment {
     TrendingPDFAdapter.OnClickListenerInterface onClickListenerInterface;
 
     EditText searchText;
+    int finalI;
 
     //departments
 
@@ -201,24 +202,27 @@ public class HomeFragment extends Fragment {
             if (i == 0){
                 dep = "Computer";
             }else if(i == 1){
-                dep = "ENTC";
-            }else if(i == 2){
-                dep = "Metallurgy";
-            }else if(i == 3){
-                dep = "DDGM";
-            }else if(i == 4){
-                dep = "Civil";
-            }else if(i == 5){
-                dep = "Mechanical";
-            }else if(i == 6){
                 dep = "IT";
-            }else if(i == 7){
+            }else if(i == 2){
+                dep = "Civil";
+            }else if(i == 3){
+                dep = "Mechanical";
+            }else if(i == 4){
+                dep = "Metallurgy";
+            }else if(i == 5){
+                dep = "ENTC";
+            }else if(i == 6){
                 dep = "Electrical";
+            }else if(i == 7){
+                dep = "DDGM";
             }
+            finalI = i;
             l_conatiner.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), SubjectActivity.class);
+                    Log.d("finalI", "onClick: "+a);
+                    intent.putExtra("cat_id", a+1);
                     startActivity(intent);
                 }
             });

@@ -1,15 +1,12 @@
 package com.example.book4u;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,80 +18,23 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SubjectBookFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class SubjectBookFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public SubjectBookFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SubjectBookFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SubjectBookFragment newInstance(String param1, String param2) {
-        SubjectBookFragment fragment = new SubjectBookFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    int[] bookImg = {R.drawable.java_book, R.drawable.c_book, R.drawable.os_book, R.drawable.cpp};
-
-    String[] bookName = {
-            "Java Programming",
-            "Programming in C",
-            "Operating System",
-            "CPP"
-    };
-
-    String[] subject = {
-            "Java Programming",
-            "Programming in C",
-            "Operating System",
-            "CPP"
-    };
+public class SubPdfActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     subjectPdfAdapter subjectPdfAdapter1;
     LinearLayoutManager linearLayoutManager;
-
+    TextView tv;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_subject_book, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sub_pdf);
 
-        RequestQueue rq = Volley.newRequestQueue(getActivity());
-        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_subject_pdf?id=61e5477b4e2fe8b523010395&page=0", null, new Response.Listener<JSONArray>() {
+        tv = (TextView) findViewById(R.id.SubName);
+
+        String id = getIntent().getStringExtra("subids");
+        String name = getIntent().getStringExtra("subName");
+        tv.setText(name);
+        RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+        JsonArrayRequest fetch = new JsonArrayRequest(Request.Method.GET, getString(R.string.baseUrl) + "get_subject_pdf?id="+id+"&page=0", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 String[] pdfname = new String[response.length()];
@@ -127,9 +67,9 @@ public class SubjectBookFragment extends Fragment {
 //                        pdfHolder.add(ob1);
 
                     }
-                    recyclerView = (RecyclerView) view.findViewById(R.id.SubPdfRecycler);
-                    subjectPdfAdapter1 = new subjectPdfAdapter(getActivity(), subimg, pdfname,dis,pdf_id);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                    recyclerView = (RecyclerView) findViewById(R.id.SubPdfRecycler);
+                    subjectPdfAdapter1 = new subjectPdfAdapter(getApplicationContext(), subimg, pdfname,dis,pdf_id);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
                     recyclerView.setAdapter(subjectPdfAdapter1);
 
 
@@ -155,7 +95,5 @@ public class SubjectBookFragment extends Fragment {
         });
 
         rq.add(fetch);
-
-        return view;
     }
 }

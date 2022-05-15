@@ -51,19 +51,28 @@
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/menu/bottommenu.xml" value="0.25" />
         <entry key="..\:/Study/Android/Book4u/app/src/main/res/menu/year_menu.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_detail.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_feedback.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_search.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_sub_pdf.xml" value="0.264" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_subject.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_subject_collection.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_subject_pdf.xml" value="0.264" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/activity_test.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/bookmarkpdf_layout.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/downloadpdf_layout.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/fragment_bookmark.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/fragment_download.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/fragment_subject_pdf.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/fragment_upload_pdf.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/mypdf_layout.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/search_layout.xml" value="0.25" />
         <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/subject_pdf_layout.xml" value="0.25" />
+        <entry key="..\:/Study/Final Project/Book4u/app/src/main/res/layout/subjectpdf_layout.xml" value="0.25" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4U/app/src/main/res/drawable/carousel_bg.xml" value="0.2703125" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4U/app/src/main/res/drawable/ic_bbookmark.xml" value="0.2703125" />
         <entry key="..\:/Users/2000a/AndroidStudioProjects/Book4U/app/src/main/res/drawable/ic_dw.xml" value="0.2703125" />

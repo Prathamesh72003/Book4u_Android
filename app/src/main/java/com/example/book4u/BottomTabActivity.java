@@ -21,9 +21,17 @@ public class BottomTabActivity extends AppCompatActivity {
     String userid,dep;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_tab);
+
+
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         userid = sharedpreferences.getString(SHARED_ID, null);
@@ -48,7 +56,7 @@ public class BottomTabActivity extends AppCompatActivity {
                         break;
 
                     case 2:
-                        fragment = new BookmarkFragment();
+                        fragment = new BookmarkFragment(userid);
                     break;
 
                     case 3:

@@ -1,9 +1,15 @@
 package com.example.book4u;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,15 +21,13 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.Downlo
     View view;
     Context context;
     LayoutInflater layoutInflater;
-    int img[];
-    String[] pdf_name, total_downloads, date;
 
-    public DownloadAdapter(Context context, int img[] , String pdf_name[], String total_downloads[], String date[]){
+    String[] pdf_name, local_path;
+
+    public DownloadAdapter(Context context, String[] pdf_name, String[] local_path){
         this.context = context;
-        this.img = img;
+        this.local_path = local_path;
         this.pdf_name = pdf_name;
-        this.total_downloads = total_downloads;
-        this.date = date;
     }
     @NonNull
     @Override
@@ -36,11 +40,22 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.Downlo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DownloadAdapter.DownloadHolder holder, int position) {
-        holder.imageView.setImageResource(img[position]);
+    public void onBindViewHolder(@NonNull DownloadAdapter.DownloadHolder holder,@SuppressLint("RecyclerView") int position) {
         holder.pdf_name.setText(pdf_name[position]);
-        holder.no_of_downloads.setText(total_downloads[position]);
-        holder.date.setText(date[position]);
+
+        holder.readNowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setDataAndType(Uri.parse(local_path[position]),"application/pdf");
+
+                Log.d("path", Environment.getExternalStorageDirectory().toString());
+                Intent chooser = Intent.createChooser(browserIntent, "Open PDF");
+                chooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // optional
+                context.startActivity(chooser);
+
+            }
+        });
     }
 
     @Override
@@ -50,14 +65,12 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.Downlo
 
     public class DownloadHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        TextView pdf_name, no_of_downloads, date;
+        Button readNowBtn;
+        TextView pdf_name;
         public DownloadHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.pdfImg);
+            readNowBtn = (Button) itemView.findViewById(R.id.readNowBtn);
             pdf_name = (TextView) itemView.findViewById(R.id.pdf_name);
-            no_of_downloads = (TextView) itemView.findViewById(R.id.total_downloads);
-            date = (TextView) itemView.findViewById(R.id.downloaded_on);
         }
     }
 }
