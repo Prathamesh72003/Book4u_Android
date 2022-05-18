@@ -66,7 +66,7 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    Button fbtn,edbtn;
+    Button fbtn,edbtn,logout,shareBtn;
     ConstraintLayout myUploadsBtn,notibtn;
     TextView wt;
 
@@ -117,6 +117,35 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), EditProfileActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        logout = view.findViewById(R.id.logoutBtn);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.clear();
+                editor.apply();
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+        shareBtn = view.findViewById(R.id.shareAppBtn);
+        shareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Download Book4u";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share the app");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
             }
         });
 
