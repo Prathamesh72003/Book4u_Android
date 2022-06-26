@@ -3,7 +3,9 @@ package com.example.book4u;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -129,6 +131,13 @@ public class UploadPdfFrag extends Fragment {
 
     String main_url;
 
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String SHARED_ID = "local_userid";
+    SharedPreferences sharedpreferences;
+    String userid;
+    String pdf_id;
+    String pdf_name;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -137,6 +146,9 @@ public class UploadPdfFrag extends Fragment {
         pdfUploadBtn = view.findViewById(R.id.pdfUploadBtn);
         notification = view.findViewById(R.id.Notify);
 
+
+        sharedpreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        userid = sharedpreferences.getString(SHARED_ID, null);
         pdfUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -366,7 +378,7 @@ public class UploadPdfFrag extends Fragment {
         JSONObject dataParam = new JSONObject();
         try {
             dataParam.put("name", nameText.getText().toString());
-            dataParam.put("uploader_id", "613f8323c9fad3ccf92f1c0a");
+            dataParam.put("uploader_id", ""+userid);
             dataParam.put("pdf_url", ""+pdf_url);
             dataParam.put("img_url", "https://sample-videos.com/img/Sample-jpg-image-500kb.jpg");
             dataParam.put("department_id", dept_id_selected);
