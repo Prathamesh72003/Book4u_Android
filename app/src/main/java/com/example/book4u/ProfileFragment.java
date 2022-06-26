@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment {
         myUploadsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), MyUploadsActivity.class);
+                Intent intent = new Intent(getContext(), MyUploadedPdfs.class);
                 startActivity(intent);
             }
         });

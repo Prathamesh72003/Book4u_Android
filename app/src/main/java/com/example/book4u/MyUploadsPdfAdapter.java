@@ -1,5 +1,6 @@
 package com.example.book4u;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,7 @@ public class MyUploadsPdfAdapter extends RecyclerView.Adapter<MyUploadsPdfAdapte
         return new MyUploadsPdfViewHolder(view);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull MyUploadsPdfViewHolder holder, int position) {
         Picasso
@@ -52,6 +54,18 @@ public class MyUploadsPdfAdapter extends RecyclerView.Adapter<MyUploadsPdfAdapte
                 .load(imgUrl[position])
                 .into(holder.imageView);
         holder.textView.setText(pdfName[position]);
+
+        if (status[position].equals("Waiting for approval")){
+            holder.pdfStatus.setText("Waiting for approval");
+            holder.pdfStatus.setTextColor(R.color.purple_500);
+        }else if(status[position].equals("Approved")){
+            holder.pdfStatus.setText("Approved");
+            holder.pdfStatus.setTextColor(R.color.green);
+        }else {
+            holder.pdfStatus.setText(status[position]);
+            holder.pdfStatus.setTextColor(R.color.red);
+        }
+
         holder.pdfStatus.setText(status[position]);
         holder.pdfViewers.setText(viewers[position]);
     }

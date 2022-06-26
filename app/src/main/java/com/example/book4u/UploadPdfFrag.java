@@ -352,7 +352,7 @@ public class UploadPdfFrag extends Fragment {
 
             String firebasePdfUrl = uploadPDFToFirebase(pdfUrl);
 
-            Toast.makeText(getContext(), ""+main_url, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "PDF Inserted!!", Toast.LENGTH_SHORT).show();
 
         }else {
             Toast.makeText(getActivity(), "All fields required", Toast.LENGTH_SHORT).show();

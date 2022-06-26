@@ -46,6 +46,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView pdfDetailName,subject,noOfViews,uploaderName,showDesc;
     ImageButton imageButton,shareBtn;
     MaterialButton downloadBtn;
+
     Button readNowBtn;
     String pdf_url;
     public static final String SHARED_PREFS = "shared_prefs";
