@@ -44,7 +44,7 @@ public class DetailActivity extends AppCompatActivity {
 
     ImageView pdfDetailImageView;
     TextView pdfDetailName,subject,noOfViews,uploaderName,showDesc;
-    ImageButton imageButton;
+    ImageButton imageButton,shareBtn;
     MaterialButton downloadBtn;
     Button readNowBtn;
     String pdf_url;
@@ -98,6 +98,20 @@ public class DetailActivity extends AppCompatActivity {
                 Intent chooser = Intent.createChooser(browserIntent, "Open PDF");
                 chooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // optional
                 startActivity(chooser);
+            }
+        });
+
+
+        shareBtn = (ImageButton) findViewById(R.id.shareBtn);
+        shareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Enjoy reading pdfs at Book4u!!!";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Book4u");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
             }
         });
 

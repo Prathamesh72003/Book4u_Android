@@ -60,7 +60,7 @@ public class BottomTabActivity extends AppCompatActivity {
                     break;
 
                     case 3:
-                        fragment = new UploadFragment();
+                        fragment = new UploadPdfFrag();
                     break;
 
                     case 4:
